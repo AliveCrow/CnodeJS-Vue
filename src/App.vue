@@ -1,10 +1,19 @@
+<!--
+ * @Description: 输入文件描述信息
+ * @Author: liu-wb
+ * @Date: 2021-06-23 10:25:22
+ * @LastEditors: liu-wb
+ * @LastEditTime: 2021-06-23 17:14:41
+ * @FilePath: /node-js/src/App.vue
+-->
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+  <div id="app " class="row at-row">
+    <div class="col-xs-24 col-lg-18 col-sm-24" style="overflow-x: hidden">
+      <router-view />
     </div>
-    <router-view />
+    <div class="col-lg-6" style="background-color: #343434">
+      <img src="./assets/cnodejs_light.svg" alt="" style="margin: 40px" />
+    </div>
   </div>
 </template>
 
