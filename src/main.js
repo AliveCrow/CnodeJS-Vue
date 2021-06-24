@@ -3,7 +3,7 @@
  * @Author: liu-wb
  * @Date: 2021-06-23 10:25:22
  * @LastEditors: liu-wb
- * @LastEditTime: 2021-06-24 10:40:50
+ * @LastEditTime: 2021-06-24 17:18:36
  * @FilePath: /node-js/src/main.js
  */
 import Vue from "vue";
@@ -16,6 +16,7 @@ import CTitle from "@/components/Title";
 import Divider from "@/components/Divider";
 import "@/style/reset.css";
 import dayjs from "dayjs";
+import "@/style/at-ui-style.scss";
 
 import { getAllTopics } from "@/api";
 

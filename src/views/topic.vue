@@ -3,7 +3,7 @@
  * @Author: liu-wb
  * @Date: 2021-06-23 17:16:05
  * @LastEditors: liu-wb
- * @LastEditTime: 2021-06-24 16:30:08
+ * @LastEditTime: 2021-06-24 17:21:50
  * @FilePath: /node-js/src/views/topic.vue
 -->
 <template>
@@ -11,7 +11,12 @@
     <CTitle size="large">{{ topic.title }}</CTitle>
     <Divider contentPosition="right">
       <section>
-        <span>作者:{{ topic.author.loginname }}</span>
+        <span
+          >作者:
+          <a :href="'/user/' + topic.author.loginname">{{
+            topic.author.loginname
+          }}</a>
+        </span>
         <span> • </span>
         <span
           >发布于:{{
@@ -59,8 +64,5 @@ export default {
   color: #333;
   line-height: 1.6;
   margin-bottom: 50px;
-  >>> img {
-    width: 100%;
-  }
 }
 </style>

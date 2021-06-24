@@ -3,7 +3,7 @@
  * @Author: liu-wb
  * @Date: 2021-06-23 10:25:22
  * @LastEditors: liu-wb
- * @LastEditTime: 2021-06-24 16:34:19
+ * @LastEditTime: 2021-06-24 17:19:05
  * @FilePath: /node-js/src/App.vue
 -->
 <template>
@@ -22,9 +22,10 @@
         <Logo />
         <Comment
           v-for="comment in $store.state.commentsList"
-          v-if="$route.meta.level === 'second'"
+          v-if="$route.meta.comment"
           :comment="comment"
-        ></Comment> </Right
+        />
+        <UserInfo v-if="$route.meta.userInfo" /> </Right
     ></Container>
   </div>
 </template>
@@ -38,12 +39,13 @@
   import Collapse from "@/components/Collapse.vue";
   import CollapseItem from "@/components/CollapseItem.vue";
   import Comment from "@/components/Comment.vue";
+  import UserInfo from "@/components/UserInfo.vue";
   import {CollapseList} from "@/config/about.js";
 
 
 export default {
   components:{
-    Left,Right,Container,BackBtn,Logo,Collapse,CollapseItem,Comment
+    Left,Right,Container,BackBtn,Logo,Collapse,CollapseItem,Comment,UserInfo
   },
   data(){
     return {
@@ -87,18 +89,6 @@ export default {
 
     &.router-link-exact-active {
       color: #42b983;
-    }
-  }
-}
-.comment-content {
-  .markdown-text {
-    p {
-      color: #fff;
-      font-size: 0.9rem;
-      text-indent: 2rem;
-      img {
-        width: 90%;
-      }
     }
   }
 }

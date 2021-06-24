@@ -3,7 +3,7 @@
  * @Author: liu-wb
  * @Date: 2021-06-24 10:45:37
  * @LastEditors: liu-wb
- * @LastEditTime: 2021-06-24 15:49:36
+ * @LastEditTime: 2021-06-24 16:46:16
  * @FilePath: /node-js/src/components/layout/left.vue
 -->
 
@@ -23,6 +23,7 @@ export default {
 <style scoped lang="scss">
 .layout-left {
   max-height: 100vh;
+  height: 100vh;
 }
 @media screen and (max-width: 1200px) {
   .layout-left {

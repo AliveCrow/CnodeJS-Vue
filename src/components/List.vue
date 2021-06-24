@@ -3,7 +3,7 @@
  * @Author: liu-wb
  * @Date: 2021-06-23 15:13:40
  * @LastEditors: liu-wb
- * @LastEditTime: 2021-06-24 10:42:13
+ * @LastEditTime: 2021-06-24 16:54:48
  * @FilePath: /node-js/src/components/List.vue
 -->
 <template>
@@ -18,9 +18,14 @@
       @click.native="clickCard(list)"
     >
       <div class="list-item">
-        <img :title="list.author.loginname" :src="list.author.avatar_url" alt />
+        <img
+          v-if="avatar"
+          :title="list.author.loginname"
+          :src="list.author.avatar_url"
+          alt
+        />
         <div>
-          <at-badge :value="list.reply_count"></at-badge>
+          <at-badge v-if="badge" :value="list.reply_count"></at-badge>
         </div>
         <at-tag
           v-show="list.tab"
@@ -47,6 +52,14 @@ export default {
     ListData: {
       type: Array,
       default: [],
+    },
+    avatar:{
+      type:Boolean,
+      default: true
+    },
+    badge:{
+      type:Boolean,
+      default: true
     },
     tabsMapReserve: {
       type: Object,

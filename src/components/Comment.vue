@@ -3,24 +3,16 @@
  * @Author: liu-wb
  * @Date: 2021-06-24 15:13:10
  * @LastEditors: liu-wb
- * @LastEditTime: 2021-06-24 16:28:45
+ * @LastEditTime: 2021-06-24 17:10:04
  * @FilePath: /node-js/src/components/Comment.vue
 -->
 <template>
   <div class="comment">
     <div class="comment-title">
       <img :src="comment.author ? comment.author.avatar_url : ''" alt="" />
-      <!-- <div
-        style="
-          display: flex;
-          flex-direction: column;
-          line-height: 1rem;
-          align-items: flex-end;
-        "
-      > -->
-      <span class="loginname">{{
+      <a class="loginname" :href="`/user/${comment.author.loginname}`">{{
         comment.author ? comment.author.loginname : ""
-      }}</span>
+      }}</a>
       <span style="font-size: 0.8rem">{{
         $dayjs(comment.create_at).format("YYYY-MM-DD")
       }}</span>

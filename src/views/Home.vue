@@ -3,7 +3,7 @@
  * @Author: liu-wb
  * @Date: 2021-06-23 12:07:03
  * @LastEditors: liu-wb
- * @LastEditTime: 2021-06-24 15:18:53
+ * @LastEditTime: 2021-06-24 16:51:42
  * @FilePath: /node-js/src/views/Home.vue
 -->
 <template>
@@ -16,7 +16,11 @@
           :name="tab"
           style="font-size: 1rem"
         >
-          <List :ListData="ListData" @CardClick="CardClick"></List>
+          <List
+            :badge="true"
+            :ListData="ListData"
+            @CardClick="CardClick"
+          ></List>
         </at-tab-pane>
       </at-tabs>
     </div>

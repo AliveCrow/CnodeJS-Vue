@@ -3,7 +3,7 @@
  * @Author: liu-wb
  * @Date: 2021-06-23 17:26:49
  * @LastEditors: liu-wb
- * @LastEditTime: 2021-06-23 17:46:50
+ * @LastEditTime: 2021-06-24 16:53:47
  * @FilePath: /node-js/src/components/Title.vue
 -->
 
@@ -33,6 +33,7 @@ export default {
 .title-component {
   font-size: 1rem;
   font-weight: bold;
+  padding: 20px;
 }
 .large {
   font-size: 2rem;
