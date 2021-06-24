@@ -3,7 +3,7 @@
  * @Author: liu-wb
  * @Date: 2021-06-23 15:13:40
  * @LastEditors: liu-wb
- * @LastEditTime: 2021-06-23 17:28:36
+ * @LastEditTime: 2021-06-24 10:42:13
  * @FilePath: /node-js/src/components/List.vue
 -->
 <template>
@@ -32,7 +32,9 @@
           {{ tabsMapReserve[list.tab] }}
         </at-tag>
         <p>{{ list.title }}</p>
-        <span class="list-item-date">2 天前</span>
+        <span class="list-item-date">{{
+          $dayjs(list.create_at).format("YYYY-MM-DD")
+        }}</span>
       </div>
     </at-card>
   </div>

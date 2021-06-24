@@ -3,7 +3,7 @@
  * @Author: liu-wb
  * @Date: 2021-06-23 10:25:22
  * @LastEditors: liu-wb
- * @LastEditTime: 2021-06-23 17:17:41
+ * @LastEditTime: 2021-06-24 11:07:07
  * @FilePath: /node-js/src/router/index.js
  */
 import Vue from "vue";
@@ -17,11 +17,17 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home,
+    meta: {
+      level: "first",
+    },
   },
   {
     path: "/topic/:id",
     name: "topicContent",
     component: () => import("../views/topic.vue"),
+    meta: {
+      level: "second",
+    },
   },
   // {
   //   path: "/about",

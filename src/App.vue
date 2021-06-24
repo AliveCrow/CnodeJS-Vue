@@ -3,19 +3,57 @@
  * @Author: liu-wb
  * @Date: 2021-06-23 10:25:22
  * @LastEditors: liu-wb
- * @LastEditTime: 2021-06-23 17:14:41
+ * @LastEditTime: 2021-06-24 11:44:12
  * @FilePath: /node-js/src/App.vue
 -->
 <template>
-  <div id="app " class="row at-row">
-    <div class="col-xs-24 col-lg-18 col-sm-24" style="overflow-x: hidden">
-      <router-view />
-    </div>
-    <div class="col-lg-6" style="background-color: #343434">
-      <img src="./assets/cnodejs_light.svg" alt="" style="margin: 40px" />
-    </div>
+  <div id="app ">
+    <Container>
+      <Left>
+        <router-view />
+      </Left>
+      <Right>
+        <BackBtn
+          v-if="$route.meta.level === 'second'"
+          :inline="false"
+          @clickHandle="clickHandle"
+          >返回首页</BackBtn
+        >
+        <Logo />
+        <Collapse></Collapse> </Right
+    ></Container>
   </div>
 </template>
+
+<script lang="js">
+  import Container from "@/components/layout/Container.vue";
+  import Left from "@/components/layout/Left.vue";
+  import Right from "@/components/layout/Right.vue";
+  import BackBtn from "@/components/BackBtn.vue";
+  import Logo from "@/components/Logo.vue";
+  import Collapse from "@/components/Collapse.vue";
+
+export default {
+  components:{
+    Left,Right,Container,BackBtn,Logo,Collapse
+  },
+  data(){
+    return {
+      list:[
+        {
+          title:'关于',
+          content:'2'
+        }
+      ]
+    }
+  },
+  methods:{
+    clickHandle(){
+      this.$router.replace('/')
+    }
+  }
+};
+</script>
 
 <style lang="scss">
 #app {
@@ -24,6 +62,7 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  height: 100%;
 }
 
 #nav {

@@ -3,7 +3,7 @@
  * @Author: liu-wb
  * @Date: 2021-06-23 11:32:09
  * @LastEditors: liu-wb
- * @LastEditTime: 2021-06-23 17:45:37
+ * @LastEditTime: 2021-06-24 09:48:25
  * @FilePath: /node-js/src/api/index.js
  */
 import { get, post, request } from "@/utils/request";
