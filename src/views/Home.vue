@@ -3,7 +3,7 @@
  * @Author: liu-wb
  * @Date: 2021-06-23 12:07:03
  * @LastEditors: liu-wb
- * @LastEditTime: 2021-06-23 17:23:31
+ * @LastEditTime: 2021-06-24 15:18:53
  * @FilePath: /node-js/src/views/Home.vue
 -->
 <template>
@@ -78,9 +78,11 @@ export default {
       }
     },
     CardClick(list){
-      this.$router.push({name:'topicContent',params:{id:list.id}})
+      this.$router.replace({name:'topicContent',params:{id:list.id}}).then(()=>{
+        window.removeEventListener('scroll',this.listenBottomOut)
+      })
     }
-  }
+  },
 
 };
 </script>

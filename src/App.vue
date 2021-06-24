@@ -3,7 +3,7 @@
  * @Author: liu-wb
  * @Date: 2021-06-23 10:25:22
  * @LastEditors: liu-wb
- * @LastEditTime: 2021-06-24 11:44:12
+ * @LastEditTime: 2021-06-24 16:34:19
  * @FilePath: /node-js/src/App.vue
 -->
 <template>
@@ -20,7 +20,11 @@
           >返回首页</BackBtn
         >
         <Logo />
-        <Collapse></Collapse> </Right
+        <Comment
+          v-for="comment in $store.state.commentsList"
+          v-if="$route.meta.level === 'second'"
+          :comment="comment"
+        ></Comment> </Right
     ></Container>
   </div>
 </template>
@@ -32,22 +36,31 @@
   import BackBtn from "@/components/BackBtn.vue";
   import Logo from "@/components/Logo.vue";
   import Collapse from "@/components/Collapse.vue";
+  import CollapseItem from "@/components/CollapseItem.vue";
+  import Comment from "@/components/Comment.vue";
+  import {CollapseList} from "@/config/about.js";
+
 
 export default {
   components:{
-    Left,Right,Container,BackBtn,Logo,Collapse
+    Left,Right,Container,BackBtn,Logo,Collapse,CollapseItem,Comment
   },
   data(){
     return {
       list:[
         {
           title:'关于',
-          content:'2'
+          content:{
+            author:'liu-wb'
+          }
         }
       ]
     }
   },
   methods:{
+    onChange(){
+      console.log(this);
+    },
     clickHandle(){
       this.$router.replace('/')
     }
@@ -74,6 +87,18 @@ export default {
 
     &.router-link-exact-active {
       color: #42b983;
+    }
+  }
+}
+.comment-content {
+  .markdown-text {
+    p {
+      color: #fff;
+      font-size: 0.9rem;
+      text-indent: 2rem;
+      img {
+        width: 90%;
+      }
     }
   }
 }

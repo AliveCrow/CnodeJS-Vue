@@ -3,7 +3,7 @@
  * @Author: liu-wb
  * @Date: 2021-06-23 17:16:05
  * @LastEditors: liu-wb
- * @LastEditTime: 2021-06-24 10:41:35
+ * @LastEditTime: 2021-06-24 16:30:08
  * @FilePath: /node-js/src/views/topic.vue
 -->
 <template>
@@ -19,7 +19,7 @@
           }}</span
         >
         <span> • </span>
-        <span>2000次浏览</span>
+        <span>{{ topic.visit_count }}次浏览</span>
       </section>
     </Divider>
 
@@ -34,18 +34,20 @@ import showdown from 'showdown';
 export default {
   data(){
     return {
-      topic:{},
+      topic:{
+        author:{loginname:''}
+      },
       content:''
     }
   },
   created(){
-    let converter = new showdown.Converter();
-      getTopicsById(this.$route.params.id).then(res=>{
-        this.topic = res.data
-        this.content = converter.makeHtml(res.data.content);
-        console.log(this.content);
-      })
-  }
+    getTopicsById(this.$route.params.id).then(res=>{
+      let converter = new showdown.Converter();
+      this.topic = res.data
+      this.content = converter.makeHtml(res.data.content);
+      this.$store.commit('setConmentsList',res.data.replies)
+    })
+  },
 
 };
 </script>
