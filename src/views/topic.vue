@@ -3,7 +3,7 @@
  * @Author: liu-wb
  * @Date: 2021-06-23 17:16:05
  * @LastEditors: liu-wb
- * @LastEditTime: 2021-06-24 17:21:50
+ * @LastEditTime: 2021-06-25 11:42:19
  * @FilePath: /node-js/src/views/topic.vue
 -->
 <template>
@@ -13,7 +13,7 @@
       <section>
         <span
           >作者:
-          <a :href="'/user/' + topic.author.loginname">{{
+          <a :href="'#/user/' + topic.author.loginname">{{
             topic.author.loginname
           }}</a>
         </span>
@@ -32,7 +32,7 @@
   </div>
 </template>
 <script lang="js">
-import {getTopicsById} from '@/api';
+import {getTopicsById} from '@/api/topic';
 import showdown from 'showdown';
 
 
@@ -42,10 +42,12 @@ export default {
       topic:{
         author:{loginname:''}
       },
-      content:''
+      content:'',
+      api_url:''
     }
   },
   created(){
+    this.api_url=process.env.VUE_APP_API_URL
     getTopicsById(this.$route.params.id).then(res=>{
       let converter = new showdown.Converter();
       this.topic = res.data

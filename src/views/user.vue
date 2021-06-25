@@ -3,7 +3,7 @@
  * @Author: liu-wb
  * @Date: 2021-06-24 16:39:49
  * @LastEditors: liu-wb
- * @LastEditTime: 2021-06-24 17:16:24
+ * @LastEditTime: 2021-06-25 15:10:45
  * @FilePath: /node-js/src/views/user.vue
 -->
 <template>
@@ -27,10 +27,21 @@
       :ListData="userInfo.recent_replies"
       @CardClick="CardClick"
     ></List>
+
+    <Divider contentPosition="left">
+      <section>收藏的话题</section>
+    </Divider>
+    <List
+      :avatar="false"
+      :badge="false"
+      :ListData="userInfo.collect_topics"
+      @CardClick="CardClick"
+    ></List>
   </div>
 </template>
 <script lang="js">
-  import {getUserInfo} from "@/api";
+  import {getUserInfo} from "@/api/user.js";
+  import {getUserTopicCollect} from "@/api/topic.js"
   import List from '@/components/List';
 
 export default {
@@ -41,7 +52,8 @@ export default {
     return {
       userInfo:{
         recent_topics:[],
-        recent_replies:[]
+        recent_replies:[],
+        collect_topics:[]
       }
     }
   },
@@ -50,10 +62,13 @@ export default {
   },
   methods:{
     async initUserInfo(){
-      let res = await getUserInfo(this.$route.params.loginname)
-      if(res.success){
-        this.userInfo = res.data
-        this.$store.commit('setUserInfo',res.data)
+      let userInfo = await getUserInfo(this.$route.params.loginname)
+      let collectTopics = await getUserTopicCollect(this.$route.params.loginname)
+      console.log(collectTopics);
+      if(userInfo.success && collectTopics.success ){
+        this.userInfo = userInfo.data
+        this.userInfo.collect_topics = collectTopics.data
+        this.$store.commit('setUserInfo',userInfo.data)
       }
     },
     CardClick(list){

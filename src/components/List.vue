@@ -3,11 +3,11 @@
  * @Author: liu-wb
  * @Date: 2021-06-23 15:13:40
  * @LastEditors: liu-wb
- * @LastEditTime: 2021-06-24 16:54:48
+ * @LastEditTime: 2021-06-25 11:21:38
  * @FilePath: /node-js/src/components/List.vue
 -->
 <template>
-  <div class="list">
+  <div class="list" ref="homepage">
     <at-card
       v-for="list in ListData"
       :id="list.id"

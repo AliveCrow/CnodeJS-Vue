@@ -3,14 +3,14 @@
  * @Author: liu-wb
  * @Date: 2021-06-24 15:13:10
  * @LastEditors: liu-wb
- * @LastEditTime: 2021-06-24 17:10:04
+ * @LastEditTime: 2021-06-25 15:11:06
  * @FilePath: /node-js/src/components/Comment.vue
 -->
 <template>
   <div class="comment">
     <div class="comment-title">
       <img :src="comment.author ? comment.author.avatar_url : ''" alt="" />
-      <a class="loginname" :href="`/user/${comment.author.loginname}`">{{
+      <a class="loginname" :href="`/#/user/${comment.author.loginname}`">{{
         comment.author ? comment.author.loginname : ""
       }}</a>
       <span style="font-size: 0.8rem">{{
@@ -40,7 +40,6 @@ export default {
     }
   },
   created(){
-    console.log(this.comment);
   }
 };
 </script>

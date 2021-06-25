@@ -3,7 +3,7 @@
  * @Author: liu-wb
  * @Date: 2021-06-23 11:19:32
  * @LastEditors: liu-wb
- * @LastEditTime: 2021-06-23 11:51:47
+ * @LastEditTime: 2021-06-25 11:36:33
  * @FilePath: /node-js/src/utils/request.js
  */
 import axios from "axios";
@@ -22,9 +22,9 @@ const defaultsConfig = {
 };
 
 if (process.env.NODE_ENV === "production") {
-  defaultsConfig.baseURL = "https://cnodejs.org/api/v1";
+  defaultsConfig.baseURL = process.env.VUE_APP_API_URL;
 } else if (process.env.NODE_ENV === "development") {
-  defaultsConfig.baseURL = "https://cnodejs.org/api/v1";
+  defaultsConfig.baseURL = process.env.VUE_APP_API_URL;
 }
 
 export const request = axios.create(defaultsConfig);

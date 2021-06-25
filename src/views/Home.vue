@@ -3,11 +3,11 @@
  * @Author: liu-wb
  * @Date: 2021-06-23 12:07:03
  * @LastEditors: liu-wb
- * @LastEditTime: 2021-06-24 16:51:42
+ * @LastEditTime: 2021-06-25 11:33:20
  * @FilePath: /node-js/src/views/Home.vue
 -->
 <template>
-  <div class="homepage">
+  <div class="homepage" ref="homepage">
     <div style="overflow-y: hidden; text-align: center">
       <at-tabs :animated="false" @on-change="tabChanged">
         <at-tab-pane
@@ -27,7 +27,7 @@
   </div>
 </template>
 <script lang="js">
-import {getAllTopics} from '@/api';
+import {getAllTopics} from '@/api/topic';
 import {tabsMap} from '@/config';
 import List from '@/components/List';
 
@@ -45,14 +45,13 @@ export default {
       ],
       page:1,
       currentTab:''
-
     }
   },
   mounted(){
     this.$Loading.config({
       width: 6
     })
-    window.addEventListener('scroll', this.listenBottomOut)
+    this.$refs.homepage.addEventListener('scroll', ()=>this.listenBottomOut(this.$refs.homepage))
   },
   methods:{
     async tabChanged(scoped){
@@ -66,10 +65,10 @@ export default {
       this.$Loading.finish()
       this.ListData = res.data
     },
-    listenBottomOut(){
-      let scrollTop = document.documentElement.scrollTop || document.body.scrollTop; //滚动高度
-      let clientHeight = document.documentElement.clientHeight //页面可视区域高度
-      let scrollHeight = document.documentElement.scrollHeight; //页面高度
+    listenBottomOut(ref){
+      let scrollTop = ref.scrollTop; //滚动高度
+      let clientHeight = ref.clientHeight //页面可视区域高度
+      let scrollHeight = ref.scrollHeight; //页面高度
       if(scrollTop + clientHeight >= scrollHeight){
         this.$Loading.start()
         this.page = this.page + 1
@@ -82,12 +81,18 @@ export default {
       }
     },
     CardClick(list){
-      this.$router.replace({name:'topicContent',params:{id:list.id}}).then(()=>{
-        window.removeEventListener('scroll',this.listenBottomOut)
+      let ref = this.$refs.homepage
+      this.$router.push({name:'topicContent',params:{id:list.id}}).then(()=>{
+        ref.removeEventListener('scroll',()=>this.listenBottomOut(ref))
       })
     }
   },
 
 };
 </script>
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.homepage {
+  overflow: auto;
+  height: 100%;
+}
+</style>
