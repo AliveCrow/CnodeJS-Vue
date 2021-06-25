@@ -3,7 +3,7 @@
  * @Author: liu-wb
  * @Date: 2021-06-23 10:25:22
  * @LastEditors: liu-wb
- * @LastEditTime: 2021-06-24 17:10:53
+ * @LastEditTime: 2021-06-25 10:48:10
  * @FilePath: /node-js/src/router/index.js
  */
 import Vue from "vue";
@@ -51,7 +51,7 @@ const routes = [
 ];
 
 const router = new VueRouter({
-  mode: "history",
+  mode: "hash",
   base: process.env.BASE_URL,
   routes,
 });
