@@ -3,7 +3,7 @@
  * @Author: liu-wb
  * @Date: 2021-06-23 10:42:17
  * @LastEditors: liu-wb
- * @LastEditTime: 2021-06-23 10:46:00
+ * @LastEditTime: 2021-06-25 10:23:34
  * @FilePath: /node-js/vue.config.js
  */
 const path = require("path");
@@ -17,7 +17,9 @@ module.exports = {
    * then publicPath should be set to "/bar/".
    * In most cases please use '/' !!!
    * Detail: https://cli.vuejs.org/config/#publicpath
+   * 
    */
+  publicPath: './',
   /* 
     publicPath: '/workspace8.1',
     outputDir: 'dist',
